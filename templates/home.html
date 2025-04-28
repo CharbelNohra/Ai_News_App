@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI News Generator - Search</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🔍 Discover Tech News</h1>
+      <form method="post" class="search-form">
+        <input
+          type="text"
+          name="topic"
+          placeholder="Enter a topic (e.g. AI, blockchain)"
+          required
+        />
+        <button type="submit">Find News</button>
+      </form>
+
+      {% if error %}
+      <div class="error">{{ error }}</div>
+      {% endif %}
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generated Article</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>📰 AI-Powered Tech Article</h1>
+
+      <div class="result">
+        <h2>{{ title }}</h2>
+        <p>{{ content | safe }}</p>
+
+        <div class="links">
+          <h4>🔗 Related News:</h4>
+          <ul>
+            {% for link in links %}
+            <li><a href="{{ link }}" target="_blank">{{ link }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <a href="{{ url_for('home') }}" class="back-button">← Back to Search</a>
+      </div>
+    </div>
+  </body>
+
+</html>
