@@ -2,21 +2,26 @@ from flask import Flask, render_template, request, redirect, url_for
 import requests
 from bs4 import BeautifulSoup
 import re
+import os
+from dotenv import load_dotenv
+
+# Load .env file
+load_dotenv()
 
 app = Flask(__name__)
 
 # API Configuration
 LLM_CONFIG = {
-    "api_type": "together",
-    "model": "meta-llama/Llama-Vision-Free",
-    "api_key": "tgp_v1_jh9oJN_Ksmc6MrhB-mDGdgd8cODmiQJUcuit_7E1NX4",
-    "base_url": "https://api.together.xyz/v1",
-    "temperature": 0
+    "api_type": os.getenv("LLM_API_TYPE"),
+    "model": os.getenv("LLM_MODEL"),
+    "api_key": os.getenv("LLM_API_KEY"),
+    "base_url": os.getenv("LLM_BASE_URL"),
+    "temperature": float(os.getenv("LLM_TEMPERATURE", 0))
 }
 
-GOOGLE_API_KEY = "AIzaSyA7q7jdzTc_9cQaneG9AIxOALwZC_UTohE"
-SEARCH_ENGINE_ID = "f676707b4878b417f"
-NEWS_API_KEY = "0bb5c94b7a7b4f5c928f2201276fb1c0"
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+SEARCH_ENGINE_ID = os.getenv("SEARCH_ENGINE_ID")
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
